@@ -1,0 +1,41 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <rect fill="none" stroke="#000" x="0" y="1.00002" width="798" height="597.99998" id="svg_5" stroke-width="12"/>
+  <rect fill="#ffffff" stroke="#000" x="4.00004" y="3" width="791.99994" height="31" id="svg_6" stroke-width="4"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="2" x="7" y="38" width="28" height="549" id="svg_7" rx="21"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="3" x="34" y="38" width="157" height="543" id="svg_8" rx="21"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="50" y="57" width="25" height="25" id="svg_16" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="91" y="58" width="25" height="25" id="svg_17" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="135" y="59" width="25" height="25" id="svg_18" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="92" y="95" width="25" height="25" id="svg_19" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="135" y="97" width="25" height="25" id="svg_20" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="51" y="95" width="25" height="25" id="svg_21" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="53" y="132" width="25" height="25" id="svg_22" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="93" y="132" width="25" height="25" id="svg_23" rx="7"/>
+  <rect fill="none" stroke="#000" stroke-width="6" x="134" y="133" width="25" height="25" id="svg_24" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="50" y="189" width="25" height="25" id="svg_25" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="90" y="189" width="25" height="25" id="svg_26" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="131" y="190" width="25" height="25" id="svg_27" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="131" y="230" width="25" height="25" id="svg_28" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="90" y="230" width="25" height="25" id="svg_29" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="49" y="229" width="25" height="25" id="svg_30" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="51" y="272" width="25" height="25" id="svg_31" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="89" y="271" width="25" height="25" id="svg_32" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="132" y="274" width="25" height="25" id="svg_33" rx="7"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="13" y="156" width="16" height="16" id="svg_34"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="13" y="184" width="16" height="16" id="svg_35"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="13" y="213" width="16" height="16" id="svg_36"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="13" y="242" width="16" height="16" id="svg_37"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="13" y="271" width="16" height="18" id="svg_38"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="13" y="302" width="16" height="17" id="svg_39"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="6" x="13" y="329" width="16" height="16" id="svg_40"/>
+  <line fill="none" stroke="#000" stroke-width="3" x1="55" y1="47" x2="161" y2="48" id="svg_41"/>
+  <line fill="none" stroke="#000" stroke-width="3" x1="52" y1="172" x2="156" y2="172" id="svg_42"/>
+  <line fill="none" stroke="#000" stroke-width="3" x1="611" y1="17" x2="763" y2="17" id="svg_43"/>
+  <line fill="none" stroke="#000" stroke-width="3" x1="611" y1="17" x2="763" y2="17" id="svg_1"/>
+  <line id="svg_2" y2="20" x2="512" y1="19" x1="319" stroke-width="4" stroke="#000" fill="none"/>
+  <rect id="svg_3" height="16" width="15" y="11" x="14" stroke-width="4" stroke="#000" fill="#ffffff"/>
+ </g>
+
+</svg>

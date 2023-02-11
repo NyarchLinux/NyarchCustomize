@@ -1,0 +1,23 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+ <title>top_bar_left_dock</title>
+ <g>
+  <title>Layer 1</title>
+  <rect fill="none" stroke="#000" x="4" y="-2.99998" width="798" height="597.99998" id="svg_5" stroke-width="12"/>
+  <rect fill="#ffffff" stroke="#000" x="4.00004" y="3" width="791.99994" height="31" id="svg_6" stroke-width="4"/>
+  <line fill="none" stroke="#000" stroke-width="3" x1="611" y1="17" x2="763" y2="17" id="svg_43"/>
+  <line fill="none" stroke="#000" stroke-width="3" x1="611" y1="17" x2="763" y2="17" id="svg_1"/>
+  <line id="svg_2" y2="20" x2="512" y1="19" x1="319" stroke-width="4" stroke="#000" fill="none"/>
+  <rect id="svg_3" height="16" width="64" y="11" x="14" stroke-width="4" stroke="#000" fill="#ffffff"/>
+  <g transform="rotate(90, 48, 309.5)" id="svg_9">
+   <rect fill="#ffffff" stroke="#000" stroke-width="7" x="-148" y="279" width="392" height="61" id="svg_4" rx="30"/>
+   <rect fill="none" stroke="#000" stroke-width="3" x="32" y="291" width="32" height="34" id="svg_7"/>
+   <rect fill="none" stroke="#000" stroke-width="3" x="78" y="291" width="32" height="34" id="svg_8"/>
+   <rect fill="none" stroke="#000" stroke-width="3" x="122" y="291" width="32" height="34" id="svg_10"/>
+   <rect fill="none" stroke="#000" stroke-width="3" x="168" y="290" width="32" height="34" id="svg_11"/>
+   <rect fill="none" stroke="#000" stroke-width="3" x="-12" y="291" width="32" height="34" id="svg_12"/>
+   <rect fill="none" stroke="#000" stroke-width="3" x="-55" y="291" width="32" height="34" id="svg_13"/>
+   <rect transform="rotate(-1, -81, 308)" fill="none" stroke="#000" stroke-width="3" x="-97" y="291" width="32" height="34" id="svg_14"/>
+  </g>
+ </g>
+
+</svg>

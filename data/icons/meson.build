@@ -22,7 +22,28 @@ install_data (
 )
 
 install_data (
-    'nyarch-layout.svg',
+    'top_bar_with_menu.svg',
     install_dir: symbolic_dir
 )
+install_data (
+    'bottom_panel.svg',
+    install_dir: symbolic_dir
+)
+install_data (
+    'gnome-layout.svg',
+    install_dir: symbolic_dir
+)
+install_data (
+    'top_bar_dock.svg',
+    install_dir: symbolic_dir
+)
+install_data (
+    'top_bar_menu_dock.svg',
+    install_dir: symbolic_dir
+)
+install_data (
+    'top_bar_left_dock.svg',
+    install_dir: symbolic_dir
+)
+
 
