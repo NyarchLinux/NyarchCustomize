@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <object class="GtkGrid" id="gridcontent">
+    <property name="row-homogeneous">true</property>
+    <property name="column-homogeneous">true</property>
+     <child>
+       <object class="GtkBox">
+         <child>
+         </child>
+          <child>
+      <object class="GtkImage" id="layout1">
+        <property name="icon-name">nyarch-layout</property>
+        <property name="pixel-size">200</property>
+        <property name="hexpand">true</property>
+              <layout>
+                <property name="column">0</property>
+                <property name="row">0</property>
+              </layout>
+      </object>
+            </child>
+       </object>
+      </child>
+      <child>
+      <object class="GtkImage" id="layout2">
+        <property name="icon-name">nyarch-layout</property>
+        <property name="pixel-size">200</property>
+        <property name="hexpand">true</property>
+              <layout>
+                <property name="column">1</property>
+                <property name="row">0</property>
+              </layout>
+      </object>
+    </child>
+  </object>
+</interface>

@@ -1,0 +1,40 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <rect stroke-width="6" id="svg_1" height="48" width="793.99998" y="546" x="6.00002" stroke="#000" fill="#fff"/>
+  <rect rx="4" id="svg_2" height="23" width="22" y="558" x="19" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect rx="4" id="svg_3" height="23" width="22" y="558" x="55" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect rx="4" id="svg_5" height="23" width="22" y="558" x="87" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect rx="4" id="svg_6" height="23" width="22" y="559" x="121" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect rx="4" id="svg_7" height="23" width="22" y="560" x="157" stroke-width="6" stroke="#000" fill="#fff"/>
+  <line id="svg_8" y2="569" x2="776" y1="570" x1="538" stroke-width="6" stroke="#000" fill="none"/>
+  <rect rx="22" id="svg_9" height="527" width="30" y="16" x="14" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect rx="14" id="svg_10" height="522.00001" width="134.00001" y="16.99999" x="47" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_11" height="14.28575" width="12.69844" y="332.2767" x="22.22323" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_12" height="26.45509" width="0" y="69.84219" x="28.04335" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_13" height="13.75665" width="13.75665" y="276.19191" x="22.75233" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_14" height="13.75665" width="13.75665" y="304.23282" x="21.51856" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_16" height="14.28575" width="12.69844" y="360.3191" x="23.28144" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_17" height="14.28575" width="12.69844" y="387.8324" x="22.22323" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_18" height="14.28575" width="12.69844" y="415.87479" x="22.22323" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_19" height="13.75665" width="13.75665" y="250.26592" x="22.75233" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_21" height="24.86779" width="23.80958" y="61.37656" x="61.37675" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_23" height="24.86779" width="23.80958" y="61.90566" x="97.35568" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_24" height="24.86779" width="23.80958" y="61.37656" x="134.39281" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_25" height="24.86779" width="23.80958" y="98.94279" x="134.92191" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_26" height="24.86779" width="23.80958" y="100.5301" x="95.76837" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_27" height="24.86779" width="23.80958" y="103.17561" x="60.31855" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_28" height="24.86779" width="23.80958" y="143.91645" x="60.31855" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_29" height="24.86779" width="23.80958" y="145.50375" x="96.82657" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_30" height="24.86779" width="23.80958" y="144.97465" x="133.8637" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_31" height="24.86779" width="23.80958" y="183.59909" x="132.2764" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_32" height="24.86779" width="23.80958" y="184.65729" x="96.29747" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_33" height="24.86779" width="23.80958" y="185.18639" x="60.84764" stroke-width="6" stroke="#000" fill="#fff"/>
+  <line id="svg_34" y2="41.27069" x2="162.96431" y1="41.27069" x1="59.26034" stroke-width="6" stroke="#000" fill="none"/>
+  <line id="svg_35" y2="223.81082" x2="156.08598" y1="223.81082" x1="55.02753" stroke-width="6" stroke="#000" fill="none"/>
+  <rect id="svg_36" height="24.86779" width="23.80958" y="241.27119" x="59.78944" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_37" height="24.86779" width="23.80958" y="242.8585" x="98.94298" stroke-width="6" stroke="#000" fill="#fff"/>
+  <rect id="svg_38" height="24.86779" width="23.80958" y="242.8585" x="133.8637" stroke-width="6" stroke="#000" fill="#fff"/>
+ </g>
+</svg>
