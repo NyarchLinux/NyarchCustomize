@@ -29,6 +29,7 @@ nyarchcustomize_sources = [
   '__init__.py',
   'main.py',
   'window.py',
+  'layouts.py'
 ]
 
 install_data(nyarchcustomize_sources, install_dir: moduledir)

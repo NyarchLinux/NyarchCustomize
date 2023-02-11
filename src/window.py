@@ -19,19 +19,58 @@
 
 from gi.repository import Adw
 from gi.repository import Gtk
+from gi.repository import Gio
+from .layouts import LAYOUTS
+import os
+import json
 
 @Gtk.Template(resource_path='/moe/nyarchlinux/customize/window.ui')
 class NyarchcustomizeWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'NyarchcustomizeWindow'
 
     layoutbox = Gtk.Template.Child("layoutbox")
+    applyButton = Gtk.Template.Child("applylayout")
+    layout_amount = 6
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         layoutgrid = self.load_layouts()
         self.layoutbox.prepend(layoutgrid)
+        self.checkboxes = []
+        for i in range(self.layout_amount):
+        	self.checkboxes.append(self.layoutbuilder.get_object("l" + str(i)))
+        self.applyButton.connect("clicked", self.apply_layout)
+
+    def apply_layout(self, info=None):
+        choosen = self.get_enabled()
+        actions = self.load_layouts_actions()
+        for x in actions[choosen]["enable_extensions"]:
+            self.set_extension(x, True)
+        for x in actions[choosen]["disable_extensions"]:
+            self.set_extension(x, False)
+        for x in actions[choosen]["extra_commands"]:
+            self.execute_command(x)
+
+    def get_enabled(self):
+        i = 0
+        for checkbox in self.checkboxes:
+            if checkbox.get_active():
+                return i
+            i += 1
+
+    def load_layouts_actions(self):
+        return LAYOUTS
 
     def load_layouts(self):
     	self.layoutbuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/layoutgrid.ui')
     	return self.layoutbuilder.get_object("gridcontent")
-    	
+
+    def set_extension(self, uiid:str, enabled:bool):
+    	if enabled:
+    		arg = "enable"
+    	else:
+    		arg = "disable"
+    	self.execute_command("gnome-extensions " + arg + " " + uiid)
+
+    def execute_command(self, command):
+        os.system("flatpak-spawn --host " + command)
