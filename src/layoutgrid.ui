@@ -21,9 +21,10 @@
             </object>
             </child>
             <child>
-             <object class="GtkCheckButton">
+             <object class="GtkCheckButton" id="l1">
                <property name="halign">center</property>
                <property name="label">Bottom Panel</property>
+               <property name="group">l1</property>
              </object>
            </child>
        </object>
@@ -44,9 +45,10 @@
             </object>
             </child>
             <child>
-             <object class="GtkCheckButton">
+             <object class="GtkCheckButton" id="l2">
                <property name="halign">center</property>
                <property name="label">Gnome</property>
+               <property name="group">l1</property>
              </object>
            </child>
        </object>
@@ -67,8 +69,9 @@
             </object>
             </child>
             <child>
-             <object class="GtkCheckButton">
+             <object class="GtkCheckButton" id="l3">
                <property name="halign">center</property>
+               <property name="group">l1</property>
                <property name="label">Top panel with menu</property>
              </object>
            </child>
@@ -90,8 +93,9 @@
             </object>
             </child>
             <child>
-             <object class="GtkCheckButton">
+             <object class="GtkCheckButton" id="l4">
                <property name="halign">center</property>
+               <property name="group">l1</property>
                <property name="label">Top panel with menu and dock</property>
              </object>
            </child>
@@ -113,8 +117,9 @@
             </object>
             </child>
             <child>
-             <object class="GtkCheckButton">
+             <object class="GtkCheckButton" id="l5">
                <property name="halign">center</property>
+               <property name="group">l1</property>
                <property name="label">Top panel with dock</property>
              </object>
            </child>
@@ -136,8 +141,9 @@
             </object>
             </child>
             <child>
-             <object class="GtkCheckButton">
+             <object class="GtkCheckButton" id="l6">
                <property name="halign">center</property>
+               <property name="group">l1</property>
                <property name="label">Top panel with left dock</property>
              </object>
            </child>

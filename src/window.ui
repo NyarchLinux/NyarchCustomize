@@ -35,7 +35,13 @@
                       <object class="AdwBin">
                         <property name="child">
                           <object class="GtkBox" id="layoutbox">
-                            <property name="homogeneous">true</property>
+                            <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                            <child>
+                              <object class="GtkButton" id="applylayout">
+                                <property name="css-classes">suggested-action</property>
+                                <property name="label">Apply</property>
+                              </object>
+                            </child>
                           </object>
                         </property>
                       </object>

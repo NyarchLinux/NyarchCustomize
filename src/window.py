@@ -29,7 +29,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         layoutgrid = self.load_layouts()
-        self.layoutbox.append(layoutgrid)
+        self.layoutbox.prepend(layoutgrid)
 
     def load_layouts(self):
     	self.layoutbuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/layoutgrid.ui')
