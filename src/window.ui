@@ -54,8 +54,12 @@
                     <property name="title">Theming</property>
                     <property name="icon-name">theming-symbolic</property>
                     <property name="child">
-                      <object class="AdwStatusPage">
-                        <property name="title">Themes</property>
+                      <object class="GtkBox" id="themingbox">
+                          <property name="margin-start">30</property>
+                          <property name="margin-end">30</property>
+                          <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                          <property name="baseline-position">center</property>
+
                       </object>
                     </property>
                   </object>
@@ -67,10 +71,6 @@
   </template>
   <menu id="primary_menu">
     <section>
-      <item>
-        <attribute name="label" translatable="yes">_Preferences</attribute>
-        <attribute name="action">app.preferences</attribute>
-      </item>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>

@@ -3,6 +3,7 @@
   <gresource prefix="/moe/nyarchlinux/customize">
     <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">layoutgrid.ui</file>
+      <file preprocess="xml-stripblanks">theming.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
   </gresource>
 </gresources>

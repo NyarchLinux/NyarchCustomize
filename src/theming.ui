@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <object class="GtkBox" id="themepage">
+    <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+    <property name="baseline-position">center</property>
+    <property name="homogeneous">true</property>
+    <property name="margin-top">30</property>
+    <child>
+      <object class="AdwPreferencesPage">
+          <property name="title" translatable="yes">Theming</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title">Theming</property>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Material You</property>
+                    <property name="activatable_widget">materialyou_switch</property>
+                    <property name="subtitle" translatable="yes">Use wallpaper's colors to theme your system</property>
+                    <child>
+                        <object class="GtkSwitch" id="materialyou_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Blur</property>
+                    <property name="activatable_widget">blur_switch</property>
+                    <property name="subtitle" translatable="yes">Enables blur on various places in your system</property>
+                    <child>
+                        <object class="GtkSwitch" id="blur_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+            </object>
+          </child>
+             <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title">Animations</property>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Wobbly Windows</property>
+                    <property name="activatable_widget">wobblywindows_switch</property>
+                    <property name="subtitle" translatable="yes">Makes windows go swish swoosh</property>
+                    <child>
+                        <object class="GtkSwitch" id="wobblywindows_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Magic Lamp</property>
+                    <property name="activatable_widget">magiclamp_switch</property>
+                    <property name="subtitle" translatable="yes">Enables magic lamp effect when minimizing a window</property>
+                    <child>
+                        <object class="GtkSwitch" id="magiclamp_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Desktop Cube</property>
+                    <property name="activatable_widget">desktopcube_switch</property>
+                    <property name="subtitle" translatable="yes">Enables desktop cube effect when switching workspaces</property>
+                    <child>
+                        <object class="GtkSwitch" id="desktopcube_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+            </object>
+          </child>
+</object>
+
+    </child>
+  </object>
+</interface>

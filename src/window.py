@@ -23,6 +23,7 @@ from gi.repository import Gio
 from .layouts import LAYOUTS
 import os
 import json
+import subprocess
 
 @Gtk.Template(resource_path='/moe/nyarchlinux/customize/window.ui')
 class NyarchcustomizeWindow(Adw.ApplicationWindow):
@@ -31,15 +32,43 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
     layoutbox = Gtk.Template.Child("layoutbox")
     applyButton = Gtk.Template.Child("applylayout")
     layout_amount = 6
+    themingBox = Gtk.Template.Child("themingbox")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layoutgrid = self.load_layouts()
+        layoutgrid, themingpage = self.load_layouts()
         self.layoutbox.prepend(layoutgrid)
+        self.themingBox.append(themingpage)
         self.checkboxes = []
-        for i in range(self.layout_amount):
+        for i in range(self.layout_amount):  # To generalize and remove layout_amount
         	self.checkboxes.append(self.layoutbuilder.get_object("l" + str(i)))
         self.applyButton.connect("clicked", self.apply_layout)
+        self.theming_page()
+
+    def theming_page(self):
+        r = self.execute_command("gsettings get org.gnome.shell enabled-extensions")
+        print(r.replace("'", '"'))
+        enabled_extensions = json.loads(r.replace("'", '"'))
+        materialyou_switch = self.themingPageBuilder.get_object("materialyou_switch")
+        blur_switch = self.themingPageBuilder.get_object("blur_switch")
+        wobblywindows_switch = self.themingPageBuilder.get_object("wobblywindows_switch")
+        magiclamp_switch = self.themingPageBuilder.get_object("magiclamp_switch")
+        desktopcube_switch = self.themingPageBuilder.get_object("desktopcube_switch")
+        if "material-you-theme@asubbiah.com" in enabled_extensions:
+            materialyou_switch.set_active(True)
+        materialyou_switch.connect('notify::active', self.toggle_materialyou)
+        if "blur-my-shell@aunetx" in enabled_extensions:
+            blur_switch.set_active(True)
+        blur_switch.connect('notify::active', self.toggle_blur)
+        if "compiz-windows-effect@hermes83.github.com" in enabled_extensions:
+            wobblywindows_switch.set_active(True)
+        wobblywindows_switch.connect('notify::active', self.toggle_wobbly)
+        if "compiz-alike-magic-lamp-effect@hermes83.github.com" in enabled_extensions:
+            magiclamp_switch.set_active(True)
+        magiclamp_switch.connect('notify::active', self.toggle_magiclamp)
+        if "desktop-cube@schneegans.github.com" in enabled_extensions:
+            desktopcube_switch.set_active(True)
+        desktopcube_switch.connect('notify::active', self.toggle_desktopcube)
 
     def apply_layout(self, info=None):
         choosen = self.get_enabled()
@@ -49,7 +78,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         for x in actions[choosen]["disable_extensions"]:
             self.set_extension(x, False)
         for x in actions[choosen]["extra_commands"]:
-            self.execute_command(x)
+            self.execute_command2(x)
 
     def get_enabled(self):
         i = 0
@@ -63,7 +92,8 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
 
     def load_layouts(self):
     	self.layoutbuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/layoutgrid.ui')
-    	return self.layoutbuilder.get_object("gridcontent")
+    	self.themingPageBuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/theming.ui')
+    	return self.layoutbuilder.get_object("gridcontent"), self.themingPageBuilder.get_object("themepage")
 
     def set_extension(self, uiid:str, enabled:bool):
     	if enabled:
@@ -73,4 +103,23 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
     	self.execute_command("gnome-extensions " + arg + " " + uiid)
 
     def execute_command(self, command):
+        try:
+        	result = subprocess.check_output(['flatpak-spawn', '--host'] + command.split()).decode('utf-8')
+        except Exception as e:
+        	return None
+        return result
+
+    def execute_command2(self, command):
         os.system("flatpak-spawn --host " + command)
+
+    def toggle_materialyou(self, switch=False, active=None):
+    	self.set_extension("material-you-theme@asubbiah.com", switch.get_active())
+    def toggle_blur(self, switch=False, active=None):
+    	self.set_extension("blur-my-shell@aunetx", switch.get_active())
+    def toggle_wobbly(self, switch=False, active=None):
+    	self.set_extension("compiz-windows-effect@hermes83.github.com", switch.get_active())
+    def toggle_magiclamp(self, switch=False, active=None):
+    	self.set_extension("compiz-alike-magic-lamp-effect@hermes83.github.com", switch.get_active())
+    def toggle_desktopcube(self, switch=False, active=None):
+    	self.set_extension("desktop-cube@schneegans.github.com", switch.get_active())
+        
