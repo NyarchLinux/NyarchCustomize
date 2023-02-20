@@ -85,8 +85,51 @@
                </child>
             </object>
           </child>
-</object>
-
+                    <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title">Preferences</property>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Desktop Icons</property>
+                    <property name="activatable_widget">desktopicons_switch</property>
+                    <property name="subtitle" translatable="yes">Show icons on your desktop</property>
+                    <child>
+                        <object class="GtkSwitch" id="desktopicons_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">System Tray Icons</property>
+                    <property name="activatable_widget">systemtray_switch</property>
+                    <property name="subtitle" translatable="yes">Show apps running in background in the panel</property>
+                    <child>
+                        <object class="GtkSwitch" id="systemtray_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Background Logo</property>
+                    <property name="activatable_widget">backgroundlogo_switch</property>
+                    <property name="subtitle" translatable="yes">Show nyarch background logo on your desktop</property>
+                    <child>
+                        <object class="GtkSwitch" id="backgroundlogo_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+               </child>
+            </object>
+          </child>
+     </object>
     </child>
   </object>
 </interface>

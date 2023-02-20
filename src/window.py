@@ -54,6 +54,9 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         wobblywindows_switch = self.themingPageBuilder.get_object("wobblywindows_switch")
         magiclamp_switch = self.themingPageBuilder.get_object("magiclamp_switch")
         desktopcube_switch = self.themingPageBuilder.get_object("desktopcube_switch")
+        systemtray_switch = self.themingPageBuilder.get_object("systemtray_switch")
+        desktopicons_switch = self.themingPageBuilder.get_object("desktopicons_switch")
+        backgroundlogo_switch = self.themingPageBuilder.get_object("backgroundlogo_switch")
         if "material-you-theme@asubbiah.com" in enabled_extensions:
             materialyou_switch.set_active(True)
         materialyou_switch.connect('notify::active', self.toggle_materialyou)
@@ -69,6 +72,15 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         if "desktop-cube@schneegans.github.com" in enabled_extensions:
             desktopcube_switch.set_active(True)
         desktopcube_switch.connect('notify::active', self.toggle_desktopcube)
+        if "trayIconsReloaded@selfmade.pl" in enabled_extensions:
+            systemtray_switch.set_active(True)
+        systemtray_switch.connect('notify::active', self.toggle_trayicons)
+        if "desktopicons-neo@darkdemon" in enabled_extensions:
+            desktopicons_switch.set_active(True)
+        desktopicons_switch.connect('notify::active', self.toggle_desktopicons)
+        if "background-logo@fedorahosted.org" in enabled_extensions:
+            backgroundlogo_switch.set_active(True)
+        backgroundlogo_switch.connect('notify::active', self.toggle_backgroundlogo)
 
     def apply_layout(self, info=None):
         choosen = self.get_enabled()
@@ -122,4 +134,9 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
     	self.set_extension("compiz-alike-magic-lamp-effect@hermes83.github.com", switch.get_active())
     def toggle_desktopcube(self, switch=False, active=None):
     	self.set_extension("desktop-cube@schneegans.github.com", switch.get_active())
-        
+    def toggle_trayicons(self, switch=False, active=None):
+    	self.set_extension("trayIconsReloaded@selfmade.pl", switch.get_active())
+    def toggle_desktopicons(self, switch=False, active=None):
+    	self.set_extension("desktopicons-neo@darkdemon", switch.get_active())
+    def toggle_backgroundlogo(self, switch=False, active=None):
+    	self.set_extension("background-logo@fedorahosted.org", switch.get_active())
