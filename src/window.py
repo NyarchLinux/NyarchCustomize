@@ -21,6 +21,7 @@ from gi.repository import Adw
 from gi.repository import Gtk
 from gi.repository import Gio
 from .layouts import LAYOUTS
+from .layouts import COLORS
 import os
 import json
 import subprocess
@@ -57,6 +58,8 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         systemtray_switch = self.themingPageBuilder.get_object("systemtray_switch")
         desktopicons_switch = self.themingPageBuilder.get_object("desktopicons_switch")
         backgroundlogo_switch = self.themingPageBuilder.get_object("backgroundlogo_switch")
+        colorbox = self.themingPageBuilder.get_object("colorbox")
+        self.build_colorbox(colorbox)
         if "material-you-theme@asubbiah.com" in enabled_extensions:
             materialyou_switch.set_active(True)
         materialyou_switch.connect('notify::active', self.toggle_materialyou)
@@ -82,6 +85,26 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
             backgroundlogo_switch.set_active(True)
         backgroundlogo_switch.connect('notify::active', self.toggle_backgroundlogo)
 
+    def build_colorbox(self, colorbox):
+        self.colorbuttons = {}
+        current = self.get_current_color()
+        for color in COLORS:
+            button = Gtk.Button()
+            button.set_css_classes([".cicular"])
+            csss = Gtk.CssProvider();
+            csss.load_from_data(bytes("button { background-color: "+ color +"; border-radius: 999px;}", "utf-8"))
+            button.get_style_context().add_provider(csss, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+            if COLORS[color] == current:
+                button.set_icon_name("object-select-symbolic")
+            button.connect("clicked", self.colorbutton_clicked)
+            self.colorbuttons[button] = color
+            colorbox.append(button)
+    def colorbutton_clicked(self, button):
+        color = self.colorbuttons[button]
+        self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme accent-color " + str(COLORS[color]))
+        for cbutton in self.colorbuttons:
+            cbutton.set_icon_name("")
+        button.set_icon_name("object-select-symbolic")
     def apply_layout(self, info=None):
         choosen = self.get_enabled()
         actions = self.load_layouts_actions()
@@ -116,10 +139,20 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
 
     def execute_command(self, command):
         try:
-        	result = subprocess.check_output(['flatpak-spawn', '--host'] + command.split()).decode('utf-8')
+        	    result = subprocess.check_output(['flatpak-spawn', '--host'] + command.split()).decode('utf-8')
         except Exception as e:
-        	return None
+            return None
         return result
+    def execute_command3(self, command):
+        try:
+        	    result = subprocess.check_output(['flatpak-spawn', '--host', 'bash', '-c', command]).decode('utf-8')
+        	    print(result)
+        except Exception as e:
+            return None
+        return result
+    def get_current_color(self):
+        self.execute_command3("cat ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas/gschemas.compiled")
+        return int(self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme accent-color").replace("'", "").replace("\n", ""))
 
     def execute_command2(self, command):
         os.system("flatpak-spawn --host " + command)

@@ -15,13 +15,28 @@
                 <property name="title">Theming</property>
                 <child>
                   <object class="AdwActionRow">
-                    <property name="title" translatable="yes">Material You</property>
+                    <property name="title" translatable="yes">Material UwU</property>
                     <property name="activatable_widget">materialyou_switch</property>
                     <property name="subtitle" translatable="yes">Use wallpaper's colors to theme your system</property>
                     <child>
                         <object class="GtkSwitch" id="materialyou_switch">
                           <property name="halign">center</property>
                           <property name="valign">center</property>
+                        </object>
+                      </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwExpanderRow">
+                    <property name="title" translatable="yes">Color Theming</property>
+                    <property name="subtitle" translatable="yes">Use a custom color to theme your system</property>
+                    <child>
+                        <object class="GtkSwitch" id="colortheming_switch">
+                          <property name="halign">center</property>
+                          <property name="valign">center</property>
+                        </object>
+                        <object class="GtkBox" id="colorbox">
+                          <property name="spacing">4</property>
                         </object>
                       </child>
                   </object>
