@@ -48,9 +48,8 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
 
     def theming_page(self):
         r = self.execute_command("gsettings get org.gnome.shell enabled-extensions")
-        print(r.replace("'", '"'))
         enabled_extensions = json.loads(r.replace("'", '"'))
-        materialyou_switch = self.themingPageBuilder.get_object("materialyou_switch")
+        self.materialyou_switch = self.themingPageBuilder.get_object("materialyou_switch")
         blur_switch = self.themingPageBuilder.get_object("blur_switch")
         wobblywindows_switch = self.themingPageBuilder.get_object("wobblywindows_switch")
         magiclamp_switch = self.themingPageBuilder.get_object("magiclamp_switch")
@@ -59,10 +58,13 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         desktopicons_switch = self.themingPageBuilder.get_object("desktopicons_switch")
         backgroundlogo_switch = self.themingPageBuilder.get_object("backgroundlogo_switch")
         colorbox = self.themingPageBuilder.get_object("colorbox")
+        colortheming = self.themingPageBuilder.get_object("colortheming")
+        self.colortheming_switch = self.themingPageBuilder.get_object("colortheming_switch")
+        colortheming.add_action(self.colortheming_switch)
         self.build_colorbox(colorbox)
-        if "material-you-theme@asubbiah.com" in enabled_extensions:
-            materialyou_switch.set_active(True)
-        materialyou_switch.connect('notify::active', self.toggle_materialyou)
+        self.materialyou_switch.connect('notify::active', self.toggle_materialyou)
+        self.colortheming_switch.connect('notify::active', self.toggle_materialyou)
+        self.materialyou_switches()
         if "blur-my-shell@aunetx" in enabled_extensions:
             blur_switch.set_active(True)
         blur_switch.connect('notify::active', self.toggle_blur)
@@ -85,6 +87,18 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
             backgroundlogo_switch.set_active(True)
         backgroundlogo_switch.connect('notify::active', self.toggle_backgroundlogo)
 
+    def materialyou_switches(self):
+        r = self.execute_command("gsettings get org.gnome.shell enabled-extensions")
+        enabled_extensions = json.loads(r.replace("'", '"'))
+        acen = self.accent_colors_enabled()
+        if "material-you-theme@asubbiah.com" in enabled_extensions:
+            if not acen:
+                self.materialyou_switch.set_active(True)
+            else:
+                self.colortheming_switch.set_active(True)
+        else:
+            self.materialyou_switch.set_active(False)
+            self.colortheming_switch.set_active(False)
     def build_colorbox(self, colorbox):
         self.colorbuttons = {}
         current = self.get_current_color()
@@ -99,12 +113,14 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
             button.connect("clicked", self.colorbutton_clicked)
             self.colorbuttons[button] = color
             colorbox.append(button)
+
     def colorbutton_clicked(self, button):
         color = self.colorbuttons[button]
         self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme accent-color " + str(COLORS[color]))
         for cbutton in self.colorbuttons:
             cbutton.set_icon_name("")
         button.set_icon_name("object-select-symbolic")
+
     def apply_layout(self, info=None):
         choosen = self.get_enabled()
         actions = self.load_layouts_actions()
@@ -146,19 +162,39 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
     def execute_command3(self, command):
         try:
         	    result = subprocess.check_output(['flatpak-spawn', '--host', 'bash', '-c', command]).decode('utf-8')
-        	    print(result)
         except Exception as e:
             return None
         return result
+
     def get_current_color(self):
-        self.execute_command3("cat ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas/gschemas.compiled")
         return int(self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme accent-color").replace("'", "").replace("\n", ""))
+
+    def accent_colors_enabled(self):
+        return bool(self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme enable-accent-colors").replace("'", "").replace("\n", ""))
 
     def execute_command2(self, command):
         os.system("flatpak-spawn --host " + command)
 
     def toggle_materialyou(self, switch=False, active=None):
-    	self.set_extension("material-you-theme@asubbiah.com", switch.get_active())
+        mu = self.materialyou_switch.get_active()
+        ct = self.colortheming_switch.get_active()
+        if ct and mu:
+            if switch == self.materialyou_switch:
+                ct = False
+                self.colortheming_switch.set_active(False)
+            elif switch == self.colortheming_switch:
+                mu = False
+                self.materialyou_switch.set_active(False)
+        if ct or mu:
+            self.set_extension("material-you-theme@asubbiah.com", True)
+        if not ct and not mu:
+            self.set_extension("material-you-theme@asubbiah.com", False)
+        if ct and not mu:
+            self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors true")
+        if mu and not ct:
+            self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors false")
+
+
     def toggle_blur(self, switch=False, active=None):
     	self.set_extension("blur-my-shell@aunetx", switch.get_active())
     def toggle_wobbly(self, switch=False, active=None):

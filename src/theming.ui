@@ -27,7 +27,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="AdwExpanderRow">
+                  <object class="AdwExpanderRow" id="colortheming">
                     <property name="title" translatable="yes">Color Theming</property>
                     <property name="subtitle" translatable="yes">Use a custom color to theme your system</property>
                     <child>
