@@ -106,7 +106,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
             button = Gtk.Button()
             button.set_css_classes([".cicular"])
             csss = Gtk.CssProvider();
-            csss.load_from_data(bytes("button { background-color: "+ color +"; border-radius: 999px;}", "utf-8"))
+            csss.load_from_data("button { background-color: "+ color +"; border-radius: 999px;}", -1)
             button.get_style_context().add_provider(csss, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
             if COLORS[color] == current:
                 button.set_icon_name("object-select-symbolic")
