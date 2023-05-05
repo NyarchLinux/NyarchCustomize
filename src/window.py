@@ -62,9 +62,9 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         self.colortheming_switch = self.themingPageBuilder.get_object("colortheming_switch")
         colortheming.add_action(self.colortheming_switch)
         self.build_colorbox(colorbox)
+        self.materialyou_switches()
         self.materialyou_switch.connect('notify::active', self.toggle_materialyou)
         self.colortheming_switch.connect('notify::active', self.toggle_materialyou)
-        self.materialyou_switches()
         if "blur-my-shell@aunetx" in enabled_extensions:
             blur_switch.set_active(True)
         blur_switch.connect('notify::active', self.toggle_blur)
@@ -91,6 +91,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         r = self.execute_command("gsettings get org.gnome.shell enabled-extensions")
         enabled_extensions = json.loads(r.replace("'", '"'))
         acen = self.accent_colors_enabled()
+        print(acen)
         if "material-you-theme@asubbiah.com" in enabled_extensions:
             if not acen:
                 self.materialyou_switch.set_active(True)
@@ -99,6 +100,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         else:
             self.materialyou_switch.set_active(False)
             self.colortheming_switch.set_active(False)
+
     def build_colorbox(self, colorbox):
         self.colorbuttons = {}
         current = self.get_current_color()
@@ -170,8 +172,11 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         return int(self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme accent-color").replace("'", "").replace("\n", ""))
 
     def accent_colors_enabled(self):
-        return bool(self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme enable-accent-colors").replace("'", "").replace("\n", ""))
-
+        r = self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme enable-accent-colors").replace("'", "").replace("\n", "")
+        if r == "true":
+            return True
+        else:
+            return False
     def execute_command2(self, command):
         os.system("flatpak-spawn --host " + command)
 
@@ -190,8 +195,10 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         if not ct and not mu:
             self.set_extension("material-you-theme@asubbiah.com", False)
         if ct and not mu:
+            print("A")
             self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors true")
         if mu and not ct:
+            print("B")
             self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors false")
 
 
