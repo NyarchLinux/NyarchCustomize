@@ -195,10 +195,8 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         if not ct and not mu:
             self.set_extension("material-you-theme@asubbiah.com", False)
         if ct and not mu:
-            print("A")
             self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors true")
         if mu and not ct:
-            print("B")
             self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors false")
 
 
