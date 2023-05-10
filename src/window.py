@@ -80,7 +80,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         if "trayIconsReloaded@selfmade.pl" in enabled_extensions:
             systemtray_switch.set_active(True)
         systemtray_switch.connect('notify::active', self.toggle_trayicons)
-        if "gtk4-ding@smedius.gitlab.com" in enabled_extensions:
+        if "ding@rastersoft.com" in enabled_extensions:
             desktopicons_switch.set_active(True)
         desktopicons_switch.connect('notify::active', self.toggle_desktopicons)
         if "background-logo@fedorahosted.org" in enabled_extensions:
@@ -211,6 +211,6 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
     def toggle_trayicons(self, switch=False, active=None):
     	self.set_extension("trayIconsReloaded@selfmade.pl", switch.get_active())
     def toggle_desktopicons(self, switch=False, active=None):
-    	self.set_extension("gtk4-ding@smedius.gitlab.com", switch.get_active())
+    	self.set_extension("ding@rastersoft.com", switch.get_active())
     def toggle_backgroundlogo(self, switch=False, active=None):
     	self.set_extension("background-logo@fedorahosted.org", switch.get_active())
