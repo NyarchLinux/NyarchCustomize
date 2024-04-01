@@ -1,13 +1,19 @@
+DASH_TO_DOCK_UUID = "dash2dock-lite@icedman.github.com"
+DASH_TO_DOCK_SCHEMA = "org.gnome.shell.extensions.dash2dock-lite"
+ARCMENU_UUID = "arcmenu@arcmenu.com"
+DASH_TO_PANEL_UUID = "dash-to-panel@jderose9.github.com"
+
+
 LAYOUTS = [
 	{
 		"label": "Bottom panel",
 		"icon": "bottom_panel",
 		"enable_extensions":  [
-			"dash-to-panel@jderose9.github.com",
-			"nyarcmenu@nyarchlinux.moe"
+			DASH_TO_PANEL_UUID,
+			ARCMENU_UUID
 		],
 		"disable_extensions": [
-			"dash-to-dock@micxgx.gmail.com"
+			DASH_TO_DOCK_UUID
 		],
 		"extra_commands": [],
 	},
@@ -17,9 +23,9 @@ LAYOUTS = [
 		"enable_extensions":  [
 		],
 		"disable_extensions": [
-			"dash-to-panel@jderose9.github.com",
-			"nyarcmenu@nyarchlinux.moe",
-			"dash-to-dock@micxgx.gmail.com"
+			DASH_TO_PANEL_UUID,
+			ARCMENU_UUID,
+			DASH_TO_DOCK_UUID
 		],
 		"extra_commands": [],
 	},
@@ -27,56 +33,56 @@ LAYOUTS = [
 		"label": "Top panel with menu",
 		"icon": "top_bar_with_menu",
 		"enable_extensions":  [
-			"nyarcmenu@nyarchlinux.moe"
+			ARCMENU_UUID
 		],
 		"disable_extensions": [
-			"dash-to-panel@jderose9.github.com",
-			"dash-to-dock@micxgx.gmail.com"
+			DASH_TO_PANEL_UUID,
+			DASH_TO_DOCK_UUID
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 0"
 		],
 	},
 	{
 		"label": "Top panel with menu and dock",
 		"icon": "top_bar_menu_dock",
 		"enable_extensions":  [
-			"nyarcmenu@nyarchlinux.moe",
-			"dash-to-dock@micxgx.gmail.com"
+			ARCMENU_UUID,
+			DASH_TO_DOCK_UUID
 		],
 		"disable_extensions": [
-			"dash-to-panel@jderose9.github.com",
+			DASH_TO_PANEL_UUID,
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 0"
 		],
 	},
 	{
 		"label": "Top panel with dock",
 		"icon": "top_bar_dock",
 		"enable_extensions":  [
-			"dash-to-dock@micxgx.gmail.com"
+			DASH_TO_DOCK_UUID
 		],
 		"disable_extensions": [
-			"dash-to-panel@jderose9.github.com",
-			"nyarcmenu@nyarchlinux.moe"
+			DASH_TO_PANEL_UUID,
+			ARCMENU_UUID
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 0"
 		],
 	},
 	{
 		"label": "Top panel with left dock",
 		"icon": "top_bar_dock",
 		"enable_extensions":  [
-			"nyarcmenu@nyarchlinux.moe",
-			"dash-to-dock@micxgx.gmail.com"
+			ARCMENU_UUID,
+			DASH_TO_DOCK_UUID
 		],
 		"disable_extensions": [
-			"dash-to-panel@jderose9.github.com",
+			DASH_TO_PANEL_UUID,
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-position LEFT"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 1"
 		],
 	}
 ]

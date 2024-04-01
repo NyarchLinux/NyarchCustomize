@@ -26,6 +26,16 @@ import os
 import json
 import subprocess
 
+MAGIC_LAMP_UUID = "compiz-alike-magic-lamp-effect@hermes83.github.com"
+BLUR_MY_SHELL_UUID = "blur-my-shell@aunetx"
+WOBBLY_UUID = "compiz-windows-effect@hermes83.github.com"
+CUBE_UUID = "desktop-cube@schneegans.github.com"
+TRAYICONS_UUID = "trayIconsReloaded@selfmade.pl"
+ICONS_UUID = "ding@rastersoft.com"
+LOGO_UUID = "background-logo@fedorahosted.org"
+MU_UUID = "material-you-colors@francescocaracciolo.github.io"
+MU_SCHEMA = "org.gnome.shell.extensions.material-you-colors"
+
 @Gtk.Template(resource_path='/moe/nyarchlinux/customize/window.ui')
 class NyarchcustomizeWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'NyarchcustomizeWindow'
@@ -65,25 +75,25 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         self.materialyou_switches()
         self.materialyou_switch.connect('notify::active', self.toggle_materialyou)
         self.colortheming_switch.connect('notify::active', self.toggle_materialyou)
-        if "blur-my-shell@aunetx" in enabled_extensions:
+        if BLUR_MY_SHELL_UUID in enabled_extensions:
             blur_switch.set_active(True)
         blur_switch.connect('notify::active', self.toggle_blur)
-        if "compiz-windows-effect@hermes83.github.com" in enabled_extensions:
+        if WOBBLY_UUID in enabled_extensions:
             wobblywindows_switch.set_active(True)
         wobblywindows_switch.connect('notify::active', self.toggle_wobbly)
-        if "compiz-alike-magic-lamp-effect@hermes83.github.com" in enabled_extensions:
+        if MAGIC_LAMP_UUID in enabled_extensions:
             magiclamp_switch.set_active(True)
         magiclamp_switch.connect('notify::active', self.toggle_magiclamp)
-        if "desktop-cube@schneegans.github.com" in enabled_extensions:
+        if CUBE_UUID in enabled_extensions:
             desktopcube_switch.set_active(True)
         desktopcube_switch.connect('notify::active', self.toggle_desktopcube)
-        if "trayIconsReloaded@selfmade.pl" in enabled_extensions:
+        if TRAYICONS_UUID in enabled_extensions:
             systemtray_switch.set_active(True)
         systemtray_switch.connect('notify::active', self.toggle_trayicons)
-        if "ding@rastersoft.com" in enabled_extensions:
+        if ICONS_UUID in enabled_extensions:
             desktopicons_switch.set_active(True)
         desktopicons_switch.connect('notify::active', self.toggle_desktopicons)
-        if "background-logo@fedorahosted.org" in enabled_extensions:
+        if LOGO_UUID in enabled_extensions:
             backgroundlogo_switch.set_active(True)
         backgroundlogo_switch.connect('notify::active', self.toggle_backgroundlogo)
 
@@ -92,7 +102,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         enabled_extensions = json.loads(r.replace("'", '"'))
         acen = self.accent_colors_enabled()
         print(acen)
-        if "material-you-theme@asubbiah.com" in enabled_extensions:
+        if MU_UUID in enabled_extensions:
             if not acen:
                 self.materialyou_switch.set_active(True)
             else:
@@ -118,7 +128,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
 
     def colorbutton_clicked(self, button):
         color = self.colorbuttons[button]
-        self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme accent-color " + str(COLORS[color]))
+        self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + MU_UUID + "/schemas set "+ MU_SCHEMA + " accent-color " + str(COLORS[color]))
         for cbutton in self.colorbuttons:
             cbutton.set_icon_name("")
         button.set_icon_name("object-select-symbolic")
@@ -169,10 +179,10 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         return result
 
     def get_current_color(self):
-        return int(self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme accent-color").replace("'", "").replace("\n", ""))
+        return int(self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + MU_UUID + "/schemas get " + MU_SCHEMA + " accent-color").replace("'", "").replace("\n", ""))
 
     def accent_colors_enabled(self):
-        r = self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas get org.gnome.shell.extensions.material-you-theme enable-accent-colors").replace("'", "").replace("\n", "")
+        r = self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + MU_UUID + "/schemas get " + MU_SCHEMA + " enable-accent-colors").replace("'", "").replace("\n", "")
         if r == "true":
             return True
         else:
@@ -191,26 +201,26 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
                 mu = False
                 self.materialyou_switch.set_active(False)
         if ct or mu:
-            self.set_extension("material-you-theme@asubbiah.com", True)
+            self.set_extension(MU_UUID, True)
         if not ct and not mu:
-            self.set_extension("material-you-theme@asubbiah.com", False)
+            self.set_extension(MU_UUID, False)
         if ct and not mu:
-            self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors true")
+            self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/"+ MU_UUID +"/schemas set "+ MU_SCHEMA + " enable-accent-colors true")
         if mu and not ct:
-            self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/material-you-theme@asubbiah.com/schemas set org.gnome.shell.extensions.material-you-theme enable-accent-colors false")
+            self.execute_command3("gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + MU_UUID + "/schemas set "+ MU_SCHEMA + " enable-accent-colors false")
 
 
     def toggle_blur(self, switch=False, active=None):
-    	self.set_extension("blur-my-shell@aunetx", switch.get_active())
+    	self.set_extension(BLUR_MY_SHELL_UUID, switch.get_active())
     def toggle_wobbly(self, switch=False, active=None):
-    	self.set_extension("compiz-windows-effect@hermes83.github.com", switch.get_active())
+    	self.set_extension(WOBBLY_UUID, switch.get_active())
     def toggle_magiclamp(self, switch=False, active=None):
-    	self.set_extension("compiz-alike-magic-lamp-effect@hermes83.github.com", switch.get_active())
+    	self.set_extension(MAGIC_LAMP_UUID, switch.get_active())
     def toggle_desktopcube(self, switch=False, active=None):
-    	self.set_extension("desktop-cube@schneegans.github.com", switch.get_active())
+    	self.set_extension(CUBE_UUID, switch.get_active())
     def toggle_trayicons(self, switch=False, active=None):
-    	self.set_extension("trayIconsReloaded@selfmade.pl", switch.get_active())
+    	self.set_extension(TRAYICONS_UUID, switch.get_active())
     def toggle_desktopicons(self, switch=False, active=None):
-    	self.set_extension("ding@rastersoft.com", switch.get_active())
+    	self.set_extension(ICONS_UUID, switch.get_active())
     def toggle_backgroundlogo(self, switch=False, active=None):
-    	self.set_extension("background-logo@fedorahosted.org", switch.get_active())
+    	self.set_extension(LOGO_UUID, switch.get_active())
