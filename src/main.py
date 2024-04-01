@@ -54,7 +54,7 @@ class NyarchcustomizeApplication(Adw.Application):
                                 application_name='nyarchcustomize',
                                 application_icon='moe.nyarchlinux.customize',
                                 developer_name='Francesco Caracciolo',
-                                version='0.1.0',
+                                version='0.3.5',
                                 developers=['Francesco Caracciolo'],
                                 copyright='© 2023 Francesco Caracciolo')
         about.present()

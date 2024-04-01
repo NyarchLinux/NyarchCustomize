@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Nyarch Customize
+Comment=Edit layout and effects on Nyarch Linux
 Exec=nyarchcustomize
 Icon=moe.nyarchlinux.customize
 Terminal=false
