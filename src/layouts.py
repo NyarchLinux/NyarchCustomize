@@ -1,5 +1,5 @@
-DASH_TO_DOCK_UUID = "dash2dock-lite@icedman.github.com"
-DASH_TO_DOCK_SCHEMA = "org.gnome.shell.extensions.dash2dock-lite"
+DASH_TO_DOCK_UUID = "dash-to-dock@micxgx.gmail.com"
+DASH_TO_DOCK_SCHEMA = "org.gnome.shell.extensions.dash-to-dock"
 ARCMENU_UUID = "arcmenu@arcmenu.com"
 DASH_TO_PANEL_UUID = "dash-to-panel@jderose9.github.com"
 
@@ -40,7 +40,7 @@ LAYOUTS = [
 			DASH_TO_DOCK_UUID
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 0"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-position BOTTOM"
 		],
 	},
 	{
@@ -54,7 +54,7 @@ LAYOUTS = [
 			DASH_TO_PANEL_UUID,
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 0"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-position BOTTOM"
 		],
 	},
 	{
@@ -68,7 +68,7 @@ LAYOUTS = [
 			ARCMENU_UUID
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 0"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-position BOTTOM"
 		],
 	},
 	{
@@ -82,7 +82,7 @@ LAYOUTS = [
 			DASH_TO_PANEL_UUID,
 		],
 		"extra_commands": [
-			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-location 1"
+			"gsettings --schemadir ~/.local/share/gnome-shell/extensions/" + DASH_TO_DOCK_UUID + "/schemas set " + DASH_TO_DOCK_SCHEMA + " dock-position LEFT"
 		],
 	}
 ]
