@@ -30,7 +30,7 @@ MAGIC_LAMP_UUID = "compiz-alike-magic-lamp-effect@hermes83.github.com"
 BLUR_MY_SHELL_UUID = "blur-my-shell@aunetx"
 WOBBLY_UUID = "compiz-windows-effect@hermes83.github.com"
 CUBE_UUID = "desktop-cube@schneegans.github.com"
-TRAYICONS_UUID = "trayIconsReloaded@selfmade.pl"
+TRAYICONS_UUID = "appindicatorsupport@rgcjonas.gmail.com"
 ICONS_UUID = "ding@rastersoft.com"
 LOGO_UUID = "background-logo@fedorahosted.org"
 MU_UUID = "material-you-colors@francescocaracciolo.github.io"
@@ -52,7 +52,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         self.themingBox.append(themingpage)
         self.checkboxes = []
         for i in range(self.layout_amount):  # To generalize and remove layout_amount
-        	self.checkboxes.append(self.layoutbuilder.get_object("l" + str(i)))
+            self.checkboxes.append(self.layoutbuilder.get_object("l" + str(i)))
         self.applyButton.connect("clicked", self.apply_layout)
         self.theming_page()
 
@@ -154,26 +154,26 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         return LAYOUTS
 
     def load_layouts(self):
-    	self.layoutbuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/layoutgrid.ui')
-    	self.themingPageBuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/theming.ui')
-    	return self.layoutbuilder.get_object("gridcontent"), self.themingPageBuilder.get_object("themepage")
+        self.layoutbuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/layoutgrid.ui')
+        self.themingPageBuilder = Gtk.Builder.new_from_resource('/moe/nyarchlinux/customize/theming.ui')
+        return self.layoutbuilder.get_object("gridcontent"), self.themingPageBuilder.get_object("themepage")
 
     def set_extension(self, uiid:str, enabled:bool):
-    	if enabled:
-    		arg = "enable"
-    	else:
-    		arg = "disable"
-    	self.execute_command("gnome-extensions " + arg + " " + uiid)
+        if enabled:
+            arg = "enable"
+        else:
+            arg = "disable"
+        self.execute_command("gnome-extensions " + arg + " " + uiid)
 
     def execute_command(self, command):
         try:
-        	    result = subprocess.check_output(['flatpak-spawn', '--host'] + command.split()).decode('utf-8')
+                result = subprocess.check_output(['flatpak-spawn', '--host'] + command.split()).decode('utf-8')
         except Exception as e:
             return None
         return result
     def execute_command3(self, command):
         try:
-        	    result = subprocess.check_output(['flatpak-spawn', '--host', 'bash', '-c', command]).decode('utf-8')
+                result = subprocess.check_output(['flatpak-spawn', '--host', 'bash', '-c', command]).decode('utf-8')
         except Exception as e:
             return None
         return result
@@ -211,16 +211,16 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
 
 
     def toggle_blur(self, switch=False, active=None):
-    	self.set_extension(BLUR_MY_SHELL_UUID, switch.get_active())
+        self.set_extension(BLUR_MY_SHELL_UUID, switch.get_active())
     def toggle_wobbly(self, switch=False, active=None):
-    	self.set_extension(WOBBLY_UUID, switch.get_active())
+        self.set_extension(WOBBLY_UUID, switch.get_active())
     def toggle_magiclamp(self, switch=False, active=None):
-    	self.set_extension(MAGIC_LAMP_UUID, switch.get_active())
+        self.set_extension(MAGIC_LAMP_UUID, switch.get_active())
     def toggle_desktopcube(self, switch=False, active=None):
-    	self.set_extension(CUBE_UUID, switch.get_active())
+        self.set_extension(CUBE_UUID, switch.get_active())
     def toggle_trayicons(self, switch=False, active=None):
-    	self.set_extension(TRAYICONS_UUID, switch.get_active())
+        self.set_extension(TRAYICONS_UUID, switch.get_active())
     def toggle_desktopicons(self, switch=False, active=None):
-    	self.set_extension(ICONS_UUID, switch.get_active())
+        self.set_extension(ICONS_UUID, switch.get_active())
     def toggle_backgroundlogo(self, switch=False, active=None):
-    	self.set_extension(LOGO_UUID, switch.get_active())
+        self.set_extension(LOGO_UUID, switch.get_active())
