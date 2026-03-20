@@ -141,7 +141,7 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
         for x in actions[choosen]["disable_extensions"]:
             self.set_extension(x, False)
         for x in actions[choosen]["extra_commands"]:
-            self.execute_command2(x)
+            self.execute_command3(x)
 
     def get_enabled(self):
         i = 0
@@ -165,15 +165,37 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
             arg = "disable"
         self.execute_command("gnome-extensions " + arg + " " + uiid)
 
+    def is_flatpak(self) -> bool:
+        """
+        Check if we are in a flatpak
+
+        Returns:
+            bool: True if we are in a flatpak
+        """
+        if os.getenv("container"):
+            return True
+        return False
+    
+    def get_spawn_command(self) -> list:
+        """
+        Get the spawn command to run commands on the user system
+
+        Returns:
+            list: space diveded command  
+        """
+        if self.is_flatpak():
+            return ["flatpak-spawn", "--host"]
+        else:
+            return []
     def execute_command(self, command):
         try:
-                result = subprocess.check_output(['flatpak-spawn', '--host'] + command.split()).decode('utf-8')
+                result = subprocess.check_output(self.get_spawn_command() + command.split()).decode('utf-8')
         except Exception as e:
             return None
         return result
     def execute_command3(self, command):
         try:
-                result = subprocess.check_output(['flatpak-spawn', '--host', 'bash', '-c', command]).decode('utf-8')
+                result = subprocess.check_output(self.get_spawn_command() + ['bash', '-c', command]).decode('utf-8')
         except Exception as e:
             return None
         return result
@@ -187,8 +209,6 @@ class NyarchcustomizeWindow(Adw.ApplicationWindow):
             return True
         else:
             return False
-    def execute_command2(self, command):
-        os.system("flatpak-spawn --host " + command)
 
     def toggle_materialyou(self, switch=False, active=None):
         mu = self.materialyou_switch.get_active()
